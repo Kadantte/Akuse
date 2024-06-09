@@ -1,6 +1,6 @@
 {
     "name": "akuse-beta",
-    "version": "0.7.1",
+    "version": "0.7.2",
     "description": "Anime streaming client for PC",
     "main": "src/main.js",
     "scripts": {
@@ -22,8 +22,10 @@
         "appId": "com.electron.akuse",
         "productName": "Akuse",
         "copyright": "Copyright © 2023 Alessio Ganzarolli",
+        "asarUnpack":"assets/**",
         "mac": {
             "target": "dmg",
+            "icon": "assets/img/icon/icon.icns",
             "hardenedRuntime": true,
             "gatekeeperAssess": true,
             "extendInfo": {
@@ -33,16 +35,17 @@
             }
         },
         "dmg": {
+            "sign": false,
             "iconSize": 100,
             "contents": [
                 {
-                    "x": 255,
-                    "y": 85,
+                    "x": 150,
+                    "y": 220,
                     "type": "file"
                 },
                 {
-                    "x": 253,
-                    "y": 325,
+                    "x": 385,
+                    "y": 220,
                     "type": "link",
                     "path": "/Applications"
                 }
@@ -77,6 +80,7 @@
                 "Type": "Application",
                 "MimeType": "x-scheme-handler/akuse;"
             },
+            "icon":"assets/img/linux-icons/",
             "target": [
                 {
                     "arch": "x64",
@@ -85,9 +89,21 @@
                 {
                     "arch": "x64",
                     "target": "deb"
+                },
+                {
+                    "arch": "x64",
+                    "target": "rpm"
+                },
+                {
+                    "arch":"x64",
+                    "target":"flatpak"
                 }
-            ]
-        }
+            ]  
+        },
+        "flatpak":{
+            "runtimeVersion":"23.08",
+            "baseVersion":"23.08"
+         }
     },
     "author": "aleganza <ganzarolli.alessio@gmail.com>",
     "license": "GPL-3.0-or-later",
@@ -103,6 +119,7 @@
     "dependencies": {
         "@consumet/extensions": "github:consumet/consumet.ts",
         "axios": "^1.6.2",
+        "codegpt-nextjs": "file:c:/Users/Alessio/.vscode/extensions/danielsanmedium.dscodegpt-3.2.1/standalone",
         "discord-rpc-electron": "^4.0.1",
         "electron-squirrel-startup": "^1.0.0",
         "electron-store": "^8.1.0",
